@@ -1,9 +1,12 @@
 .Rproj.user
 *.Rproj
-*.html
 .Rhistory
 .Rapp.history
 .RData
+README.html
+file_setup.R
+R/reset_metadata.R
+man/assets/
 packrat/lib*/
 Network_Data_Availability_100spp.html
 mgm.html

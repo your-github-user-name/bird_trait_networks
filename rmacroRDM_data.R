@@ -1,23 +1,29 @@
 ## ----global-setup, echo = F----------------------------------------------
+.rs.restartR()
 rm(list=ls())
 options(stringsAsFactors = F)
 
 wkf = "rmacro"
-param = "rmacro.R"
 
 if(exists("file_setup_path")){}else{
-  file_setup_path <- "~/Documents/workflows/bird_trait_networks/file_setup.R"
+  file_setup_path <- "file_setup.R"
   source(file_setup_path)}
 source(paste0(script.folder,"project_ui.R"))
 
-launch_sr_configurator(sr_configurator, file_setup_path)
 
 ## ----master-configuration, eval=T----------------------------------------
 init_db(data.folder = data.folder,
         script.folder = getwd(), 
-        spp.list_src = "D0", fileEncoding = "UTF-8")
+        spp.list_src = "D0")
 
 # SETTINGS ###############################################################
+
+##  ............................................................................
+##  sys_ref_configurator-app                                                ####
+## check or update sys_ref files using sys_ref_configurator app
+## DEACTIVATED
+# launch_sr_configurator(sr_configurator, file_setup_path)
+
 # ---- load-sy.ref ----
 load_sys.ref(view = F)
 
@@ -80,7 +86,7 @@ master <- updateMaster(master, output = output)
   
   # ---- save-outputs ----
   write.csv(master$data, file =  paste0(input.folder, "analytical/master.csv"), 
-            row.names = F, fileEncoding = ds$fileEncoding)
+            row.names = F, fileEncoding = fileEncoding)
   save(master, file = paste(output.folder, "data/master.rda", sep = ""))
   
   

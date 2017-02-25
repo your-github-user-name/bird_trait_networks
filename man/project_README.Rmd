@@ -1,7 +1,9 @@
 ---
 title: "Project README"
 date: "Last rendered: `r Sys.time()`"
-output: html_document
+output: 
+  html_document:
+    theme: journal
 
 ---
 
@@ -9,17 +11,17 @@ output: html_document
 ```{r setup, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
 require(knitr)
 require(rmarkdown)
-knitr::opts_chunk$set(echo = TRUE, root.dir = "~/Documents/workflows/bird_trait_networks/")
-knitr::read_chunk("~/Documents/workflows/bird_trait_networks/file_setup.R")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::read_chunk("../file_setup.R")
 ```
 
 ***
 
 <br>
 
-This README documents the scripts contained in the github repo and demonstrates their use to conduct analyses relating to the **bird trait networks project**. 
+This README documents the workflows associated with the **bird trait networks project**. 
 
-Description is split into project set up and the various analyses attempted during the project.
+Description is split into project set up and the various analyses attempted during the project. See [**full list of files associated with the project**](http://annakrystalli.github.io/bird_trait_networks/file_system.html). If you are an authorised collaborator you can access all materials through the [**Open Science Framework project: `h7kgy`**](https://osf.io/h7kgy/). Check out the public wiki for more information.
 
 # **Project setup**
 
@@ -27,7 +29,7 @@ Description is split into project set up and the various analyses attempted duri
 
 ## **get access to code:**
 
-The ideal method to access the code is the through [**checking it out**](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/) from the master [**github folder**](https://github.com/annakrystalli/bird_trait_networks). It is worth spending on time to set this up properly so here's more on [**github through Rstudio**](https://annakrystalli.github.io/Mozfest_github-rstudio/index.html), [setting yourself up on github and Rstudio](https://github.com/mikecroucher/ISBE_Symposium) and [forking & linking projects through RStudio](https://annakrystalli.github.io/Mozfest_github-rstudio/evolottery.html)
+The ideal method to access the code is the through [**checking it out**](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/) from the master [**github folder**](https://github.com/annakrystalli/bird_trait_networks). It is worth spending on time to set this up properly so here's more on [**github through Rstudio**](https://annakrystalli.github.io/Mozfest_github-rstudio/index.html), [setting yourself up on github and Rstudio](https://github.com/mikecroucher/ISBE_Symposium) and [forking & linking projects through RStudio](https://annakrystalli.github.io/Mozfest_github-rstudio/evolottery.html). To update your fork with changes I've made to the master for the instructions on [**making a pull request**](http://annakrystalli.github.io/bird_trait_networks/pulling_repo.html).
 
 <img src="assets/repo.png" alt="Smiley face" height="100" width="150"><img src="assets/rstudio.png" alt="Smiley face" height="100" width="150">
 
@@ -39,7 +41,7 @@ unzipping it and supplying the **path to the unzipped folder** to parameter `scr
 
 <br>
 
-## **configure project - edit `file_setup.R`**
+## **configure project locally - edit `file_setup.R`**
 
 To initiate a project locally, the first thing to do is edit script [**`file_setup.R`**](https://github.com/annakrystalli/bird_trait_networks/blob/master/file_setup.R) to **specify the paths to:**
 
@@ -59,7 +61,7 @@ Once installed, you'll be able to programmatically access files (see example bel
 
 ### 2. Folder containing the code (the github folder)
 
-Ideally it is the ***path to an Rstudio project, [checked out](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/) from the master [github folder](https://github.com/annakrystalli/bird_trait_networks)*** 
+Ideally it is the **path to an Rstudio project**, [**checked out**](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/) from the master [**github repository**](https://github.com/annakrystalli/bird_trait_networks). Otherwise the path to the folder containing downloaded contents of repo.
 
 
 
@@ -70,11 +72,15 @@ Ideally it is the ***path to an Rstudio project, [checked out](http://www.molecu
 
 ## **set up file.system**
 set path to `file_setup.R` script and source
-```{r}
-file_setup_path <- "~/Documents/workflows/bird_trait_networks/file_setup.R"
+```{r, eval = FALSE}
+file_setup_path <- "file_setup.R"
 source(file_setup_path)
 ```
 
+```{r, echo = F}
+file_setup_path <- "../file_setup.R"
+source(file_setup_path)
+```
 
 <br>
 
@@ -141,11 +147,11 @@ network analysis of mgm derived associations of trait marginal relationship, per
 - #### [**`data_gap_eval`**](http://annakrystalli.github.io/bird_trait_networks/data_gap_eval.nb.html): 
 Evaluation of data avalaibility in response to `min.n` and resulting biases.
 
-- #### [**`Network_Data_Availability`**](http://annakrystalli.github.io/bird_trait_networks/Network_Data_Availability.nb.html): 
-Evaluation of trait pair data avalaibility (full data). [Network_Data_Availability.Rmd generating script](https://github.com/annakrystalli/bird_trait_networks/blob/master/man/Network_Data_Availability.Rmd) in `man/` folder in repo.
+- #### [**`Network_Data_Availability_all`**](http://annakrystalli.github.io/bird_trait_networks/Network_Data_Availability_all.nb.html): 
+Evaluation of trait pair data avalaibility (full data). [**Network_Data_Availability_all.Rmd** generating script](https://github.com/annakrystalli/bird_trait_networks/blob/master/man/Network_Data_Availability_all.Rmd) in `man/` folder in repo.
 
 - #### [**`Network_Data_Availability_100spp`**](http://annakrystalli.github.io/bird_trait_networks/Network_Data_Availability_100spp.nb.html): 
-Evaluation of trait pair data avalaibility (100spp data). [Network_Data_Availability 100spp.Rmd generating script](https://github.com/annakrystalli/bird_trait_networks/blob/master/man/Network_Data_Availability_100spp.Rmd) in `man/` folder in repo.
+Evaluation of trait pair data avalaibility (100spp data). [**Network_Data_Availability 100spp.Rmd** generating script](https://github.com/annakrystalli/bird_trait_networks/blob/master/man/Network_Data_Availability_100spp.Rmd) in `man/` folder in repo.
 
 - #### [**`Hierarchical Networks`**](http://annakrystalli.github.io/bird_trait_networks/Hierarchical_Networks.html): 
 Report on Hierarchical network theory and tools. [Hierarchical Networks.Rmd generating script](https://github.com/annakrystalli/bird_trait_networks/blob/master/man/Hierarchical Networks.Rmd) in `man/` folder in repo.
